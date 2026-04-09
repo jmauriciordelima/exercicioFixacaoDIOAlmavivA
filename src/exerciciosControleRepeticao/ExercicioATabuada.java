@@ -2,14 +2,28 @@ package exerciciosControleRepeticao;
 
 public class ExercicioATabuada {
 
-    public void calculadora(int numero) {
+    public void gerarTabuada(int numero) {
+
+        if (validaEntrada(numero) == 0) {
+            return;
+        }
 
         System.out.printf("Tabuada do [%d]%n", numero);
 
         for (int i = 1; i <= 10; i++) {
-            for (int j = i; j <= i; j++) {
-                System.out.printf("%d X %d = %d%n", numero, j, (j * numero));
-            }
+            System.out.printf("%d X %d = %d%n", numero, i, (i * numero));
         }
+
     }
+
+    private int validaEntrada(int numero) {
+
+        if (numero < 0) {
+            System.out.println("Não existe tabuada negativa. Tente novamente!");
+            return 0;
+        }
+
+        return numero;
+    }
+
 }

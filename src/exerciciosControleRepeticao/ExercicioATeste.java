@@ -1,5 +1,6 @@
 package exerciciosControleRepeticao;
 
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class ExercicioATeste {
@@ -9,9 +10,24 @@ public class ExercicioATeste {
         Scanner entrada = new Scanner(System.in);
         ExercicioATabuada tabuada = new ExercicioATabuada();
 
-        System.out.print("Informe qual tabuada deseja verificar -> ");
-        int numeroUsuario = entrada.nextInt();
-        tabuada.calculadora(numeroUsuario);
+        int numeroUsuario = -1;
+
+        System.out.println("Para finalizar o programa, basta digitar [0].");
+
+        do {
+            try {
+                System.out.print("Informe qual tabuada deseja verificar -> ");
+                numeroUsuario = entrada.nextInt();
+                if (numeroUsuario == 0) {
+                    System.out.println("Finalizando... até logo!");
+                    return;
+                }
+                tabuada.gerarTabuada(numeroUsuario);
+            } catch (InputMismatchException e) {
+                System.out.println("Caractere não identificado, digite um número válido.");
+                entrada.next();
+            }
+        } while (true);
 
     }
 }
