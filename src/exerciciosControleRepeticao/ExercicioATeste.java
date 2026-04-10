@@ -37,5 +37,6 @@ public class ExercicioATeste {
             }
         } while (continuar);
 
+        entrada.close();
     }
 }
